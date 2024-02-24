@@ -11,4 +11,5 @@
 
 ## Solution to 01 ---------------------------------------------------------------;
 
-![solutions](https://github.com/gugucazhiz/my-java-classes/assets/107414595/693086dc-6c1f-4a90-ba7a-0237f986f879)
+![solution1](https://github.com/gugucazhiz/my-java-classes/assets/107414595/d8ec63d6-2188-4a7f-9023-5d2238c74a8e)
+
