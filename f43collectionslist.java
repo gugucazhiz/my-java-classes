@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import java.util.Iterator;
+
 public class f43collectionslist {
     public static void main(String[] args) {
 
@@ -43,7 +45,7 @@ public class f43collectionslist {
         List<Double> notas4 = List.of(2d,4d,1d);
         //Dessa maneira tambem não é possivel remover nem adicioanr
         //valores (imutavel)
-
+        List<Double> notas6 = new ArrayList<>(Arrays.asList(2d,4d,1d,8d,12d,52d));
 
 
         ////////////// MANEIRAS DE ALTERAR VALORES
@@ -63,5 +65,28 @@ public class f43collectionslist {
         
         System.out.println("Exiba os itens de acordo com a ordem de inserção");
         for(Double nota : notas2) System.out.println(nota);
+        Double soma =0.0;
+        
+        //Somando todos os valors
+        //como não existe nenhum metodo "some" vamos usar o metodo interator
+        System.out.println("Iterator");
+       Iterator<Double> iterator4 = notas4.iterator();
+        while(iterator4.hasNext()){
+            double prox = iterator4.next();
+            soma += prox;
+        }
+        System.out.println(soma);
+
+        //remova valores maiores que 7
+        System.out.println(notas6);
+
+        Iterator<Double> iterator2 = notas6.iterator();
+        while(iterator2.hasNext()){
+            double next2 = iterator2.next();
+            if(next2 > 7) iterator2.remove();
+        }
+        System.out.println(notas6); //interessante que o iterator ja faz a "intereção" diretamente no codigo.
+
+        //notas6.clear();  APAGAR TODA A LISTA
     }
 }
