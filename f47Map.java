@@ -1,8 +1,14 @@
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+
+import LeetCode.teste;
+
+
 
 public class f47Map {
     public static void main(String[] args) {
@@ -16,6 +22,8 @@ public class f47Map {
             put("Mobi",16.1);
             put("Hb20",14.5);
             put("Kwid",15.6);
+            put("Hilux",9.8);
+            put("Civic",14.5);
         }};
         System.out.println(Carros);
 
@@ -64,23 +72,56 @@ public class f47Map {
 
 
         //CARRO QUE CONSOME MAIS
-        Double Bebemais =Collections.min(Carros.values());
-        Set<Map.Entry<String,Double>>carrosbebos = Carros.entrySet();
-        String CarrosQueConsomeMais = "";
-        Double valordoconsumo = 0d;
-        
-        //Criado a variavel de comparação key 2  // recebendo valores de carrosbebos
-        for(Map.Entry<String,Double> key2 : carrosbebos){
-            //SE a variavel que recebe valores do map for igual ao menor valor do map
-            if(key2.getValue().equals(Bebemais)){
-                //Então a String recebe o key Correspondente a este carro;
-                CarrosQueConsomeMais = key2.getKey();
-                valordoconsumo = key2.getValue();
-                //EU SEI QUE PODERIA TER USADO A VARIAVEL "BEBEMAIS" DIRETAMENTE;
-                //mas estava testando
+        Double bebemais = Collections.min(Carros.values());
+        Set<Map.Entry<String,Double>> TodosOsCarros =Carros.entrySet();
+        String CarWhoDrinksTheMost = "";
+
+        for(Map.Entry<String,Double> key2: TodosOsCarros){
+            if(key2.getValue().equals(bebemais)){
+                CarWhoDrinksTheMost = key2.getKey();
             }
         }
-        System.out.println("O carro que mais consome é o :"+CarrosQueConsomeMais);
-        System.out.println("Valor do consumo: "+valordoconsumo+" "+Bebemais);
+        System.out.println("\n"+CarWhoDrinksTheMost +" Consumo de: "+bebemais);
+
+        //Soma dos consumos
+        Iterator<Double> Teste = Carros.values().iterator();
+        Double soma = 0d;
+
+        while(Teste.hasNext()){
+            soma += Teste.next();
+            System.out.println("\n"+ soma);
+        }
+
+        //Remova valores iguais "14,5"
+
+        Iterator<Double> iterator2 = Carros.values().iterator();
+
+        while(iterator2.hasNext()){
+            if (iterator2.next().equals(14.5)){
+                iterator2.remove();
+            }
+        }
+        System.out.println("\n Carros: "+ Carros);
+
+        // Map<String,Double> Carros2 = new TreeMap<>(Carros); PODERIA ESCREVER ASSIM, MAS IREI FAZER A MÃO
+
+        Map<String,Double> Carros2 = new TreeMap<>(){{
+            put("Acura", 7.8);
+            put("Gol", 14.5);
+            put("Uno", 15.6);
+            put("Mobi",16.1);
+            put("Hb20",14.5);
+            put("Kwid",15.6);
+            put("Hilux",9.8);
+            put("Civic",14.5);
+        }};
+
+        System.out.println("\n VALORES ORGANIZADOS DE MANEIRA NATURAL: \n"+ Carros2);
+
+        //APAGUE O CONJUTO DE CARROS
+        Carros2.clear();
+        System.out.println("\n"+Carros2);
+
+        System.out.println("ESTA VAZIO? "+Carros2.isEmpty());
     }
 }
